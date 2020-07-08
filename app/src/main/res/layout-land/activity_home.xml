@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActivityHome">
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/title"
+        android:textSize="36sp" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@color/Phoenix_Lt_Green"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:textSize="36sp"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/x_border_green_grey"
+        android:gravity="center_horizontal"
+        android:text="@string/username"
+        android:textColor="@color/Phoenix_White" />
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/Phoenix_Lt_Yellow"
+        android:textSize="36sp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:inputType="textPassword"
+        android:layout_gravity="center"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor" />
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/x_border_yellow_grey"
+        android:gravity="center_horizontal"
+        android:text="@string/password"
+        android:textColor="@color/Phoenix_White" />
+    <Button
+        android:id="@+id/btnLogon"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="@color/Phoenix_Dk_Red"
+        android:text="@string/login"
+        android:textColor="@color/Phoenix_White"
+        android:textSize="48sp" />
+    <Button
+        android:id="@+id/btnLockPass"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="@color/Phoenix_Dk_Yellow"
+        android:text="@string/admin_access"
+        android:textColor="@color/Phoenix_White"
+        android:textSize="48sp" />
+    <TextView
+        android:id="@+id/tvWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
+        android:gravity="fill|end"
+        android:justificationMode="inter_word"
+        android:text="@string/blank" />
+</LinearLayout>

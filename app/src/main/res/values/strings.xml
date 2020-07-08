@@ -1,0 +1,18 @@
+<resources>
+    <string name="admin_access">ADMIN ACCESS</string>
+    <string name="app_name">Phoenix Launcher</string>
+    <string name="blank"> </string>
+    <string name="current_department">Current Department: %1$s</string>
+    <string name="current_grade">Current Grade: %1$s</string>
+    <string name="current_user">Current User: %1$s</string>
+    <string name="enter">ENTER</string>
+    <string name="error">ERROR: %1$s</string>
+    <string name="exit">CLOSE</string>
+    <string name="input_prompt">%1$s</string>
+    <string name="login">LOGIN</string>
+    <string name="logoff">LOGOFF</string>
+    <string name="password">PASSWORD</string>
+    <string name="title">Phoenix Hospitality Software</string>
+    <string name="username">USERNAME</string>
+    <string name="warning">This is a secured, private computer system owned by %1$s. All information contained on this system is deemed to be PRIVATE, PROPRIETARY, CONFIDENTIAL and the property of %1$s. Unauthorized access or use is strictly prohibited. By using %1$s resources, you agree to comply with %1$s policies. Any unauthorized to or use of %1$s Resources may be punishable in a court of law and may include termination of employment or contract with %1$s.</string>
+</resources>

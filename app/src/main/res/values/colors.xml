@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Phoenix_Black">#000000</color>
+    <color name="Phoenix_White">#FFFFFF</color>
+    <color name="Phoenix_Gray">#858585</color>
+    <color name="Phoenix_Lt_Green">#06F522</color>
+    <color name="Phoenix_Dk_Green">#047010</color>
+    <color name="Phoenix_Lt_Yellow">#EEDE04</color>
+    <color name="Phoenix_Dk_Yellow">#777704</color>
+    <color name="Phoenix_Dk_Red">#99023C</color>
+</resources>
