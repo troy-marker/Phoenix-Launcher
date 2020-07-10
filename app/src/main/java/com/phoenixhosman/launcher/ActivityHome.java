@@ -1,3 +1,13 @@
+/*
+    The Phoenix Hospitality Management System
+    Launcher App Source Code
+    Main Activity Code File
+    Copyright (c) 2020 By Troy Marker Enterprises
+    All Rights Under Copyright Reserved
+
+    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+    Use of this code outside the PHMS is strictly prohibited.
+ */
 package com.phoenixhosman.launcher;
 
 import android.annotation.SuppressLint;
@@ -21,9 +31,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import static android.view.View.inflate;
 
+/**
+ * This activity display links to the other apps in the Phoenix Hospitality
+ * system, and use authentication to only show those that the user has
+ * permission to use.
+ * @author Troy L. Marker
+ * @version 1.0.0
+ * @since 0.5.0
+ */
 public class ActivityHome extends Activity implements View.OnClickListener
 {
     private String strCoName;
@@ -33,6 +50,11 @@ public class ActivityHome extends Activity implements View.OnClickListener
     private EditText etPassword;
     final private static int REQUEST_CODE_1 = 1;
 
+    /**
+     * This method will create the activity, read content to display, and show the main activity screen
+     * Used when the activity is (re)created.
+     * @param savedInstanceState current saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +89,6 @@ public class ActivityHome extends Activity implements View.OnClickListener
     /**
      * Override of the onBackPress method from the parent class
      * This disables the back button on the device.
-     *
      */
     @Override
     public void onBackPressed() {
@@ -76,9 +97,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
 
     /**
      * The error display method
-     *
      * This method displays a dialog box with an error message and a close button.
-     *
      * @param strError the error message to display
      */
     @SuppressWarnings ("SameParameterValue")
@@ -99,7 +118,6 @@ public class ActivityHome extends Activity implements View.OnClickListener
 
     /**
      * Method to display the lock password dialog
-     *
      * @param strPrompt - the dialog prompt
      */
     @SuppressWarnings ("SameParameterValue")
@@ -124,6 +142,11 @@ public class ActivityHome extends Activity implements View.OnClickListener
             }
         });
     }
+
+    /**
+     * This method overrides the parents click listner.
+     * @param view the view clicked.
+     */
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
@@ -189,9 +212,9 @@ public class ActivityHome extends Activity implements View.OnClickListener
         intent.putExtra("departmentname", departmentname);
         startActivityForResult(intent, REQUEST_CODE_1);
     }
+
     /**
      * Function to trim whitespace from the end of a string.
-     *
      * @param s the string to trim
      * @return the trimmed string
      */

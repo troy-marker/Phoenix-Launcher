@@ -1,3 +1,13 @@
+/*
+    The Phoenix Hospitality Management System
+    Launcher App Source Code
+    App List Code File
+    Copyright (c) 2020 By Troy Marker Enterprises
+    All Rights Under Copyright Reserved
+
+    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+    Use of this code outside the PHMS is strictly prohibited.
+ */
 package com.phoenixhosman.launcher;
 
 import android.app.Activity;
@@ -11,11 +21,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,11 +33,9 @@ import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
  * This activity display links to the other apps in the Phoenix Hospitality
  * system, and use authentication to only show those that the user has
  * permission to use.
- *
  * @author Troy L. Marker
  * @version 1.0.0
  * @since 0.5.0
- *
  */
 public class ActivityApp extends Activity implements View.OnClickListener {
     private PackageManager manager;
@@ -40,11 +46,9 @@ public class ActivityApp extends Activity implements View.OnClickListener {
     private String grade;
     private String department;
 
-
     /**
      * This method will create the activity, read content to display, and show the main activity screen
      * Used when the activity is (re)created.
-     *
      * @param savedInstanceState current saved instance state
      */
     @Override
@@ -78,11 +82,9 @@ public class ActivityApp extends Activity implements View.OnClickListener {
     }
 
     /**
-     *
      * This method reads all the apps on the device, and displays only those
      * apps that are part of the Phoenix Hospitality System, with the
      * exception of Phoenix Install and Phoenix Launcher.
-     *
      */
     private void loadApps(){
         manager = getPackageManager();
@@ -110,31 +112,16 @@ public class ActivityApp extends Activity implements View.OnClickListener {
     public class ApAdapter extends RecyclerView.Adapter<ApAdapter.ApViewHolder> {
         private final ArrayList<ObjectApp> mApList;
 
-        /**
-         * The type Ap view holder.
-         */
         class ApViewHolder extends ViewHolder {
-            /**
-             * The M ap btn.
-             */
+
             final Button mApBtn;
 
-            /**
-             * Instantiates a new Ap view holder.
-             *
-             * @param ApView the ap view
-             */
             ApViewHolder(View ApView) {
                 super(ApView);
                 mApBtn = ApView.findViewById(R.id.ApBtn);
             }
         }
 
-        /**
-         * Instantiates a new Ap adapter.
-         *
-         * @param ApList the ap list
-         */
         ApAdapter(ArrayList<ObjectApp> ApList) {
             mApList = ApList;
         }
@@ -184,16 +171,13 @@ public class ActivityApp extends Activity implements View.OnClickListener {
     /**
      * Override of the onBackPress method from the parent class
      * This disable th back button on the device.
-     *
      */
     @Override
     public void onBackPressed() {
     }
 
     /**
-     *
      * This method will log the current user off and return to the home activity
-     *
      */
     private void Logoff() {
         getContentResolver().delete(ProviderUser.CONTENT_URI,null,null);
@@ -202,11 +186,8 @@ public class ActivityApp extends Activity implements View.OnClickListener {
     }
 
     /**
-     *
      * This method overrides the parents click listner.
-     *
      * @param view the view clicked.
-     *
      */
     @Override
     public void onClick(View view) {

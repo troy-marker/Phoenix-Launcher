@@ -1,4 +1,14 @@
 <resources>
+    <!--
+        The Phoenix Hospitality Management System
+        Launcher App Source Code
+        String Values XML Definition File
+        Copyright (c) 2020 By Troy Marker Enterprises
+        All Rights Under Copyright Reserved
+
+        The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+        Use of this code outside the PHMS is strictly prohibited.
+    -->
     <string name="admin_access">ADMIN ACCESS</string>
     <string name="app_name">Phoenix Launcher</string>
     <string name="blank"> </string>

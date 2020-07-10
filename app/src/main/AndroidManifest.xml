@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--suppress ALL -->
+<!--
+    The Phoenix Hospitality Management System
+    Launcher App Source Code
+    Manifest File
+    Copyright (c) 2020 By Troy Marker Enterprises
+    All Rights Under Copyright Reserved
+
+    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+    Use of this code outside the PHMS is strictly prohibited.
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.phoenixhosman.launcher">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
-        android:icon="@drawable/x_launcher"
+        android:icon="@mipmap/x_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/x_launcher_round"
+        android:roundIcon="@mipmap/x_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Phoenix"
         tools:ignore="AllowBackup,GoogleAppIndexWarning">

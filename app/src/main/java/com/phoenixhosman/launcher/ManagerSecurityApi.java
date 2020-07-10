@@ -1,16 +1,23 @@
+/*
+    The Phoenix Hospitality Management System
+    Launcher App Source Code
+    Security API Interface Code File
+    Copyright (c) 2020 By Troy Marker Enterprises
+    All Rights Under Copyright Reserved
+
+    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+    Use of this code outside the PHMS is strictly prohibited.
+ */
 package com.phoenixhosman.launcher;
 
-import com.google.gson.GsonBuilder;
-
-
-import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
- * The type ManagerLauncherApi.
+ * The ManagerSecurityApi manager.
+ * @author Troy L. Marker
+ * @version 1.0.0
+ * @since 0.5.0
  */
 class ManagerSecurityApi {
     private static InterfaceSecurityApi service;
@@ -19,7 +26,6 @@ class ManagerSecurityApi {
 
     /**
      * Instantiates a new ManagerSecurityApi.
-     *
      * @param strApiUrl the strApiUrl
      */
     ManagerSecurityApi(String strApiUrl) {
@@ -32,7 +38,10 @@ class ManagerSecurityApi {
         service = retrofit.create(InterfaceSecurityApi.class);
     }
 
-    @SuppressWarnings("unused")
+    /**
+     * Method to return the ManagerSecurityApi instance
+     * @return ManagerSecurityApi
+     */
     static synchronized ManagerSecurityApi getInstance() {
         if (managerSecurityApi == null) {
             managerSecurityApi = new ManagerSecurityApi(ApiUrl);
@@ -40,7 +49,10 @@ class ManagerSecurityApi {
         return managerSecurityApi;
     }
 
-    @SuppressWarnings("unused")
+    /**
+     * Method to return the Api service
+     * @return InterfaceSecurityApi
+     */
     InterfaceSecurityApi getApi() {
         return service;
     }

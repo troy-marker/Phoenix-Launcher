@@ -1,3 +1,13 @@
+/*
+    The Phoenix Hospitality Management System
+    User App Source Code
+    Settings Content Provider Code File
+    Copyright (c) 2020 By Troy Marker Enterprises
+    All Rights Under Copyright Reserved
+
+    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+    Use of this code outside the PHMS is strictly prohibited.
+ */
 package com.phoenixhosman.launcher;
 
 import android.content.ContentProvider;
@@ -11,13 +21,14 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * The User Content Provider.
+ */
 public class ProviderUser extends ContentProvider {
     static final String PROVIDER_NAME ="com.phoenixhosman.launcher.ProviderUser";
     static final String URL = "content://" + PROVIDER_NAME +"/acl";
