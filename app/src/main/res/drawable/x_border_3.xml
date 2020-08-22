@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     The Phoenix Hospitality Management System
-    Launcher App Source Code
-    Gray Border Layout Definition File
+    Phoenix Database Manager App
+    Border 3 Graphic Layout Definition File
     Copyright (c) 2020 By Troy Marker Enterprises
     All Rights Under Copyright Reserved
 
@@ -15,5 +15,5 @@
         android:width="1dp"
         android:color="@color/Phoenix_White" />
     <padding android:left="0dp" android:right="0dp" android:top="0dp" android:bottom="0dp"/>
-    <solid android:color="@color/Phoenix_Black"/>
+    <solid android:color="@color/Phoenix_Gray"/>
 </shape>

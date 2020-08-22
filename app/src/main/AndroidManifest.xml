@@ -34,7 +34,7 @@
         <activity
             android:name="com.phoenixhosman.launcher.ActivityApp" />
         <provider
-            android:name=".ProviderUser"
+            android:name="com.phoenixhosman.phoenixlib.ProviderUser"
             android:authorities="com.phoenixhosman.launcher.ProviderUser"
             android:exported="true"
             tools:ignore="ExportedContentProvider"  />

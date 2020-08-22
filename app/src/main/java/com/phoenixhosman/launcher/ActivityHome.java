@@ -81,7 +81,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
             new ManagerSecurityApi(strApiUrl);
             tvWarning.setText(getString(R.string.warning, rtrim(strCoName)));
         } else {
-            Error("\nRequired setting missing.\nPlease (re)run Phoenix Install App");
+            Error("Required setting missing.", true);
         }
 
     }
@@ -92,7 +92,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
      */
     @Override
     public void onBackPressed() {
-        Error("\nFunction Disbled.\nThe back button has been disabled.");
+        Error("The back button has been disabled.", false);
     }
 
     /**
@@ -101,10 +101,10 @@ public class ActivityHome extends Activity implements View.OnClickListener
      * @param strError the error message to display
      */
     @SuppressWarnings ("SameParameterValue")
-    private void Error(String strError) {
+    private void Error(String strError, Boolean exit) {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
         View view = inflate(this, R.layout.dialog_error, null);
-        Button btnExit = view.findViewById(R.id.buttonExitButton);
+        Button btnExit = view.findViewById(R.id.btnExitButton);
         Button btnError = view.findViewById(R.id.btnErrorMessage);
         btnError.setText(getString(R.string.error, strError ));
         mBuilder.setView(view);
@@ -112,7 +112,10 @@ public class ActivityHome extends Activity implements View.OnClickListener
         dialog.setCanceledOnTouchOutside(false);
         dialog.setCancelable(false);
         dialog.show();
-        btnExit.setOnClickListener(v -> dialog.dismiss());
+        btnExit.setOnClickListener(v -> {
+            dialog.dismiss();
+            if (exit) finishAndRemoveTask();
+        });
 
     }
 
@@ -136,7 +139,12 @@ public class ActivityHome extends Activity implements View.OnClickListener
         btnEnter.setOnClickListener(v -> {
             if (edtLockPass.getText().toString().equals(strLockPass)) {
                 dialog.dismiss();
-                finishAffinity();
+                this.getPackageManager().clearPackagePreferredActivities(this.getPackageName());
+                finish();
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             } else {
                 dialog.dismiss();
             }
@@ -152,7 +160,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
         switch(view.getId()) {
             case R.id.btnLogon:
                 if (etUsername.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()) {
-                    Error("\nBoth the username and password are required.");
+                    Error("Both the username and password are required.", false);
                 } else {
                     Call<String> call = ManagerSecurityApi.getInstance().getApi().login(etUsername.getText().toString(), etPassword.getText().toString());
                     call.enqueue(new Callback<String>() {
@@ -162,7 +170,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
                                 try {
                                     assert body != null;
                                     JSONObject obj = new JSONObject(body);
-                                    if(obj.optString("success").equals("1")) {
+                                    if(obj.optBoolean("success")) {
                                         etUsername.setText("");
                                         etPassword.setText("");
                                         etUsername.requestFocus();

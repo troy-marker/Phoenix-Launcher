@@ -1,18 +1,299 @@
-<resources>
-    <!--
-        The Phoenix Hospitality Management System
-        Launcher App Source Code
-        Styles XML Definition File
-        Copyright (c) 2020 By Troy Marker Enterprises
-        All Rights Under Copyright Reserved
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    The Phoenix Hospitality Management System
+    Phoenix Hospitality Common Source Code
+    Styles Definition XML File
+    Copyright (c) 2020 By Troy Marker Enterprises
+    All Rights Under Copyright Reserved
 
-        The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
-        Use of this code outside the PHMS is strictly prohibited.
-    -->
+    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+    Use of this code outside the PHMS is strictly prohibited.
+-->
+<resources>
     <style name="Phoenix" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/Phoenix_Black</item>
         <item name="android:textColor">@color/Phoenix_White</item>
         <item name="android:fontFamily">@font/okuda</item>
         <item name="android:textSize">24sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:spinnerStyle">@android:style/Widget.Holo.Light.Spinner</item>
+    </style>
+
+
+
+
+    <style name="Phoenix_Activity_Button_Bank_EditText">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_EditText.Green">
+        <item name="android:background">@color/Phoenix_Lt_Green</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_EditText.Yellow">
+        <item name="android:background">@color/Phoenix_Lt_Yellow</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_TextView">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_TextView.Green">
+        <item name="android:background">@drawable/x_border_green_grey</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_TextView.Yellow">
+        <item name="android:background">@drawable/x_border_yellow_grey</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_TextView.White">
+        <item name="android:background">@drawable/x_border_white_grey</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_TextView.White.Land">
+        <item name="android:paddingTop">1dp</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_Button">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:paddingTop">50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_Button.Blue">
+        <item name="android:background">@drawable/x_blue_button</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_Button.Blue.Land">
+        <item name="android:paddingTop">51dp</item>
+        <item name="android:layout_height">73dp</item>
+    </style>
+    <style name="Phoenix_Activity_Button_Bank_Warning">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:gravity">fill|end</item>
+        <item name="android:justificationMode">inter_word</item>
+    </style>
+    <style name="Phoenix_Activity_Layout_Left">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Phoenix_Activity_Layout_MainMenu">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="Phoenix_Activity_Layout_Middle_Frame">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="Phoenix_Activity_Layout_Right">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Phoenix_Activity_Layout_SubMenu">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="Phoenix_Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Phoenix_Fragment_Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+    <style name="Phoenix_Fragment_Layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:baselineAligned">false</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="Phoenix_Fragment_Layout_Entry">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Phoenix_Fragment_Layout_Entry_Prompt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/blank</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+    <style name="Phoenix_Fragment_Layout_Buttons">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Phoenix_Fragment_Layout_List_Header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="Phoenix_Fragment_Layout_List_Row">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="Phoenix_Fragment_Layout_List_Column">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/x_border_3</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+    </style>
+    <style name="Phoenix_Fragment_Layout_List_Recycle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="Phoenix_Fragment_Layout_List_Recycle_Item">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/x_border_1</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:text">@string/blank</item>
+    </style>
+    <style name="Phoenix_Dialog">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">53dp</item>
+        <item name="android:background">@color/Phoenix_Black</item>
+    </style>
+    <style name="Phoenix_Dialog_Message">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">-17dp</item>
+        <item name="android:background">@drawable/x_border_0</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="Phoenix_Dialog_Message.Error">
+        <item name="android:textColor">@color/Phoenix_Lt_Red</item>
+    </style>
+    <style name="Phoenix_Dialog_Message.Success">
+        <item name="android:textColor">@color/Phoenix_Lt_Green</item>
+    </style>
+    <style name="Phoenix_Dialog_Button">
+        <item name="android:layout_width">124dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">37dp</item>
+        <item name="android:text"> </item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="Phoenix_Dialog_Button.Error">
+        <item name="android:background">@drawable/x_red_button</item>
+    </style>
+    <style name="Phoenix_Dialog_Button.Success">
+
+    </style>
+    <style name="Phoenix_Dialog_Button.Input">
+        <item name="android:background">@drawable/x_blue_button</item>
+    </style>
+    <style name="Phoenix_Dialog_Input">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/Phoenix_Black</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+    </style>
+    <style name="Phoenix_Dialog_Input_Title">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+    </style>
+    <style name="Phoenix_Dialog_Input_Entry">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:layout_below">@id/txtPrompt</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_toStartOf">@id/btnEnter</item>
+        <item name="android:background">@drawable/x_border</item>
+        <item name="android:fontFamily">@font/okuda</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:text">@string/blank</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+    </style>
+    <style name="Phoenix_Button">
+        <item name="android:layout_width">124dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">35dp</item>
+        <item name="android:text"> </item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="Phoenix_Button.Green" parent="Phoenix_Button">
+        <item name="android:background">@drawable/x_green_button</item>
+    </style>
+    <style name="Phoenix_Button.Yellow" parent="Phoenix_Button">
+        <item name="android:background">@drawable/x_yellow_button</item>
+    </style>
+    <style name="Phoenix_Button.Blue" parent="Phoenix_Button">
+        <item name="android:background">@drawable/x_blue_button</item>
+    </style>
+    <style name="Phoenix_Button.Red" parent="Phoenix_Button">
+        <item name="android:background">@drawable/x_red_button</item>
+    </style>
+    <style name="Phoenix_Input">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="Phoenix_Input.Label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+    <style name="Phoenix_Input.Edit">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+    </style>
+    <style name="Phoenix_Input.Edit.Text">
+        <item name="android:inputType">text</item>
+    </style>
+    <style name="Phoenix_Input.Edit.Password">
+        <item name="android:inputType">textPassword</item>
+    </style>
+    <style name="Phoenix_Input.Spinner">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">@drawable/x_border_2</item>
+        <item name="android:popupBackground">@drawable/x_border_1</item>
+        <item name="android:spinnerMode">dropdown</item>
     </style>
 </resources>

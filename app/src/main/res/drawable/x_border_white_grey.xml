@@ -2,7 +2,7 @@
 <!--
     The Phoenix Hospitality Management System
     Settings Installer App
-    Green Button Bottom Border Layout Definition File
+    White Button Bottom Border Layout Definition File
     Copyright (c) 2020 By Troy Marker Enterprises
     All Rights Under Copyright Reserved
 
@@ -19,7 +19,7 @@
             <stroke
                 android:width="4dp"
                 android:color="@color/Phoenix_Gray" />
-            <solid android:color="@color/Phoenix_Dk_Green" />
+            <solid android:color="@color/Phoenix_White" />
             <padding android:top="2dp" />
         </shape>
     </item>
