@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Phoenix_Black">#000000</color>
+    <color name="Phoenix_Dk_Blue">#070794</color>
+    <color name="Phoenix_Dk_Green">#047010</color>
+    <color name="Phoenix_Dk_Red">#99023C</color>
+    <color name="Phoenix_Dk_Yellow">#777704</color>
+    <color name="Phoenix_Gray">#858585</color>
+    <color name="Phoenix_Lt_Blue">#0000FF</color>
+    <color name="Phoenix_Lt_Green">#06F522</color>
+    <color name="Phoenix_Lt_Red">#FF2579</color>
+    <color name="Phoenix_Lt_Yellow">#EEDE04</color>
+    <color name="Phoenix_White">#FFFFFF</color>
+    <string name="blank"> </string>
+    <string name="close">CLOSE</string>
+    <string name="enter">ENTER</string>
+    <string name="error">ERROR: %1$s</string>
+    <string name="input_prompt">%1$s</string>
+    <string name="success">SUCCESS: %1$s</string>
+    <style name="Activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="Activity.Middle">
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Activity.Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="ActivityLayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="ActivityLayout.Left">
+
+    </style>
+    <style name="ActivityLayout.Menu">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="ActivityLayout.Middle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="ActivityLayout.MiddleFrame">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="ActivityLayout.Right">
+        <item name="android:layout_gravity">end</item>
+    </style>
+    <style name="AppList">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="AppListButton" parent="Logout">
+        <item name="android:layout_width">250dp</item>
+    </style>
+    <style name="ButtonBank">
+        <item name="android:layout_width">510dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:baselineAligned">false</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="ButtonBankButton">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:paddingTop">50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="ButtonBankButton.Blue">
+        <item name="android:background">@drawable/x_blue_button</item>
+    </style>
+    <style name="ButtonBankButton.Green">
+        <item name="android:background">@drawable/x_green_button</item>
+    </style>
+    <style name="ButtonBankButton.Red">
+        <item name="android:background">@drawable/x_red_button</item>
+    </style>
+    <style name="ButtonBankButton.Yellow">
+        <item name="android:background">@drawable/x_yellow_button</item>
+    </style>
+    <style name="ButtonBankCol">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="ButtonBankCol.Right">
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
+    <style name="ButtonBankEditText">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+    <style name="ButtonBankEditText.Green">
+        <item name="android:background">@color/Phoenix_Lt_Green</item>
+    </style>
+    <style name="ButtonBankEditText.Yellow">
+        <item name="android:background">@color/Phoenix_Lt_Yellow</item>
+    </style>
+    <style name="ButtonBankTextView">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+    </style>
+    <style name="ButtonBankTextView.Blue">
+        <item name="android:background">@drawable/x_border_blue_grey</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+    </style>
+    <style name="ButtonBankTextView.Green">
+        <item name="android:background">@drawable/x_border_green_grey</item>
+    </style>
+    <style name="ButtonBankTextView.Red">
+        <item name="android:background">@drawable/x_border_red_grey</item>
+    </style>
+    <style name="ButtonBankTextView.White">
+        <item name="android:background">@drawable/x_border_white_grey</item>
+    </style>
+    <style name="ButtonBankTextView.Yellow">
+        <item name="android:background">@drawable/x_border_yellow_grey</item>
+    </style>
+    <style name="ButtonBankWarning">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:gravity">fill|end</item>
+        <item name="android:justificationMode">inter_word</item>
+    </style>
+    <style name="Dialog">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:background">@color/Phoenix_Black</item>
+
+    </style>
+    <style name="DialogButton">
+        <item name="android:layout_width">124dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">37dp</item>
+        <item name="android:text"> </item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+        <item name="android:fontFamily">@font/okuda</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="DialogButton.Error">
+        <item name="android:background">@drawable/x_red_button</item>
+    </style>
+    <style name="DialogButton.Input">
+        <item name="android:background">@drawable/x_blue_button</item>
+    </style>
+    <style name="DialogButton.Success">
+        <item name="android:background">@drawable/x_green_button</item>
+    </style>
+    <style name="DialogInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/Phoenix_Black</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+    </style>
+    <style name="DialogInput.Entry">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">33dp</item>
+        <item name="android:layout_below">@id/txtPrompt</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_toStartOf">@id/btnEnter</item>
+        <item name="android:background">@drawable/x_border_0</item>
+        <item name="android:fontFamily">@font/okuda</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:text">@string/blank</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+    </style>
+    <style name="DialogInput.Title">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/okuda</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+    </style>
+    <style name="DialogMessage">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:background">@drawable/x_border_0</item>
+        <item name="android:fontFamily">@font/okuda</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="DialogMessage.Error">
+        <item name="android:textColor">@color/Phoenix_Lt_Red</item>
+    </style>
+    <style name="DialogMessage.Success">
+        <item name="android:textColor">@color/Phoenix_Lt_Green</item>
+    </style>
+    <style name="Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Fragment.Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+    <style name="FragmentInputEdit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+    </style>
+    <style name="FragmentInputEdit.Password">
+        <item name="android:inputType">textPassword</item>
+    </style>
+    <style name="FragmentInputEdit.Phone">
+        <item name="android:inputType">phone</item>
+    </style>
+    <style name="FragmentInputEdit.Text">
+        <item name="android:inputType">text</item>
+    </style>
+    <style name="FragmentLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:baselineAligned">false</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="FragmentLayout.Buttons">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="FragmentLayout.Entry">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="FragmentLayout.EntryPrompt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:text">@string/blank</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="FragmentLayout.EntryVertical">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="FragmentLayout.ListColumn">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/x_border_3</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+    </style>
+    <style name="FragmentLayout.ListHeader">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="FragmentLayout.ListRecycle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="FragmentLayout.ListRecycleItem">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/x_border_1</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:text">@string/blank</item>
+    </style>
+    <style name="FragmentLayout.ListRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="FragmentLayout.Spinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/x_border_2</item>
+        <item name="android:popupBackground">@drawable/x_border_1</item>
+        <item name="android:spinnerMode">dropdown</item>
+    </style>
+    <style name="FragmentLayoutButton">
+        <item name="android:layout_width">124dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">35dp</item>
+        <item name="android:text"> </item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="FragmentLayoutButton.Blue">
+        <item name="android:background">@drawable/x_blue_button</item>
+    </style>
+    <style name="FragmentLayoutButton.Green">
+        <item name="android:background">@drawable/x_green_button</item>
+    </style>
+    <style name="FragmentLayoutButton.Red">
+        <item name="android:background">@drawable/x_red_button</item>
+    </style>
+    <style name="FragmentLayoutButton.Yellow">
+        <item name="android:background">@drawable/x_yellow_button</item>
+    </style>
+    <style name="Header">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="HeaderWrapper">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Logout" parent="ButtonBankButton.Blue">
+        <item name="android:layout_width">128dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:paddingTop">50dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+    <style name="MenuButton">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:paddingTop">28dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/Phoenix_Black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="MenuButton.Blue">
+        <item name="android:background">@drawable/x_blue_button</item>
+    </style>
+    <style name="MenuButton.Green">
+        <item name="android:background">@drawable/x_green_button</item>
+    </style>
+    <style name="MenuButton.Red">
+        <item name="android:background">@drawable/x_red_button</item>
+    </style>
+    <style name="MenuButton.Yellow">
+        <item name="android:background">@drawable/x_yellow_button</item>
+    </style>
+    <style name="Phoenix" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/Phoenix_Black</item>
+        <item name="android:textColor">@color/Phoenix_White</item>
+        <item name="android:fontFamily">@font/okuda</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:spinnerStyle">@android:style/Widget.Holo.Light.Spinner</item>
+    </style>
+    <style name="SelectorPage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="SelectorPageSelector">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+    <style name="SelectorPageSelectorButton">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_marginStart">-30dp</item>
+        <item name="android:enabled">false</item>
+        <item name="android:background">@drawable/x_add_icon</item>
+    </style>
+    <style name="SelectorPageSelectorLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="SelectorPageSelectorSpinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginEnd">30dp</item>
+        <item name="android:background">@drawable/x_border_2</item>
+        <item name="android:popupBackground">@drawable/x_border_1</item>
+        <item name="android:spinnerMode">dropdown</item>
+    </style>
+    <style name="UserInformation">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>

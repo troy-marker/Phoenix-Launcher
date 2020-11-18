@@ -12,12 +12,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Phoenix_Activity.Middle"
+    style="@style/Activity.Middle"
 
     tools:context=".ActivityHome"
     tools:ignore="DisableBaselineAlignment,InefficientWeight,NestedWeights,LabelFor,AutoFill">
     <TextView
-        style="@style/Phoenix_Activity.Title"
+        style="@style/Activity.Title"
         android:text="@string/title" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,31 +28,27 @@
         android:layout_weight="0"
         android:orientation="vertical">
 
+
         <EditText
             android:id="@+id/etUsername"
-            style="@style/Phoenix_Activity_Button_Bank_EditText.Green" />
-
+            style="@style/ButtonBankEditText.Green" />
         <TextView
-            style="@style/Phoenix_Activity_Button_Bank_TextView.White.Land"
+            style="@style/ButtonBankTextView.White"
             android:text="@string/username" />
-
         <EditText
             android:id="@+id/etPassword"
-            style="@style/Phoenix_Activity_Button_Bank_EditText.Green"
+            style="@style/ButtonBankEditText.Green"
             android:inputType="textPassword" />
-
         <TextView
-            style="@style/Phoenix_Activity_Button_Bank_TextView.White.Land"
+            style="@style/ButtonBankTextView.White"
             android:text="@string/password" />
-
         <Button
             android:id="@+id/btnLogon"
-            style="@style/Phoenix_Activity_Button_Bank_Button.Blue.Land"
+            style="@style/ButtonBankButton.Blue"
             android:text="@string/login" />
-
         <Button
             android:id="@+id/btnLockPass"
-            style="@style/Phoenix_Activity_Button_Bank_Button.Blue.Land"
+            style="@style/ButtonBankButton.Blue"
             android:text="@string/admin_access" />
     </LinearLayout>
 
@@ -63,8 +59,8 @@
 
         <TextView
             android:id="@+id/tvWarning"
-            style="@style/Phoenix_Activity_Button_Bank_Warning"
-            android:text="Testing" />
+            style="@style/ButtonBankWarning"
+            android:text="@string/blank" />
     </LinearLayout>
     </LinearLayout>
 </LinearLayout>

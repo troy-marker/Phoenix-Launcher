@@ -24,9 +24,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.phoenixhosman.phoenixapi.ObjectApp;
+import com.phoenixhosman.phoenixlib.ActivityPhoenixLib;
+import com.phoenixhosman.phoenixlib.ProviderUser;
 import java.util.ArrayList;
 import java.util.List;
-
 import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 /**
@@ -45,6 +48,7 @@ public class ActivityApp extends Activity implements View.OnClickListener {
     private int count = 0;
     private String grade;
     private String department;
+    final ActivityPhoenixLib Phoenix = new ActivityPhoenixLib();
 
     /**
      * This method will create the activity, read content to display, and show the main activity screen
@@ -174,6 +178,7 @@ public class ActivityApp extends Activity implements View.OnClickListener {
      */
     @Override
     public void onBackPressed() {
+        Phoenix.Error(ActivityApp.this, getString(R.string.disabled, getString(R.string.back)),false);
     }
 
     /**

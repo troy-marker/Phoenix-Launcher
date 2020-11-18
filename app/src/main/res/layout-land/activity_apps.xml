@@ -9,47 +9,33 @@
     The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
     Use of this code outside the PHMS is strictly prohibited.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Activity"
     android:orientation="vertical">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        style="@style/HeaderWrapper">
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:orientation="vertical">
+            style="@style/Header">
             <TextView
                 android:id="@+id/tvLoggedUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/UserInformation"
                 android:text="@string/current_user" />
             <TextView
                 android:id="@+id/tvAccessGrade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/UserInformation"
                 android:text="@string/current_grade" />
             <TextView
                 android:id="@+id/tvDepartment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/UserInformation"
                 android:text="@string/current_department" />
         </LinearLayout>
         <Button
             android:id="@+id/btLogoff"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/x_blue_button"
-            android:paddingTop="50dp"
-            android:text="@string/logoff"
-            android:textColor="@color/Phoenix_Black" />
+            style="@style/Logout"
+            android:text="@string/logoff" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvApps"
-        android:layout_width="250dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:orientation="vertical"/>
+        style="@style/AppList" />
 </LinearLayout>

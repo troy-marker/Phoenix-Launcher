@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    The Phoenix Hospitality Management System
+    System Library Package
+    Dialog Error Portrait Layout Definition File
+    Copyright (c) 2020 By Troy Marker Enterprises
+    All Rights Under Copyright Reserved
+
+    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+    Use of this code outside the PHMS is strictly prohibited.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Dialog">
+    <Button
+        android:id="@+id/btnMessage"
+        style="@style/DialogMessage.Success"
+        android:text="@string/success"/>
+    <Button
+        android:id="@+id/btnButton"
+        style="@style/DialogButton.Success"
+        android:text="@string/close" />
+</LinearLayout>

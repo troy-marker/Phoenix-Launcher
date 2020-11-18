@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    The Phoenix Hospitality Management System
+    System Library Package
+    Home Activity Portrait Layout Definition File
+    Copyright (c) 2020 By Troy Marker Enterprises
+    All Rights Under Copyright Reserved
+
+    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+    Use of this code outside the PHMS is strictly prohibited.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/DialogInput"
+    android:orientation="horizontal"
+    tools:ignore="LabelFor,RtlSymmetry,AutoFill">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtPrompt"
+            style="@style/DialogInput.Title"
+            android:text="@string/blank" />
+        <EditText
+            android:id="@+id/edtLockPass"
+            style="@style/DialogInput.Entry" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnEnter"
+        style="@style/DialogButton.Input"
+        android:text="@string/enter" />
+</LinearLayout>

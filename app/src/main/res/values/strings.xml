@@ -17,7 +17,6 @@
     <string name="current_user">Current User: %1$s</string>
     <string name="enter">ENTER</string>
     <string name="error">ERROR: %1$s</string>
-    <string name="exit">CLOSE</string>
     <string name="input_prompt">%1$s</string>
     <string name="login">LOGIN</string>
     <string name="logoff">LOGOFF</string>
@@ -25,4 +24,12 @@
     <string name="title">Phoenix Hospitality Software</string>
     <string name="username">USERNAME</string>
     <string name="warning">This is a secured, private computer system owned by %1$s. All information contained on this system is deemed to be PRIVATE, PROPRIETARY, CONFIDENTIAL and the property of %1$s. Unauthorized access or use is strictly prohibited. By using %1$s resources, you agree to comply with %1$s policies. Any unauthorized to or use of %1$s Resources may be punishable in a court of law and may include termination of employment or contract with %1$s.</string>
+    <string name="required">Required setting missing.</string>
+    <string name="disabled">The %1$s button is disabled.</string>
+    <string name="back">Back</string>
+    <string name="both_required">Both the %1$s are required.</string>
+    <string name="username_password">username and password</string>
+    <string name="user_not">User not authorized.</string>
+    <string name="enter_lock_pass">Enter Lock Password:</string>
+    <string name="unexpected">Unexpected value: </string>
 </resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    The Phoenix Hospitality Management System
+    System Library Package
+    Blue Dynamic Button Layout Definition File
+    Copyright (c) 2020 By Troy Marker Enterprises
+    All Rights Under Copyright Reserved
+
+    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+    Use of this code outside the PHMS is strictly prohibited.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_pressed="true"
+        android:drawable="@drawable/w_blue_selected" />
+    <item
+        android:state_selected="true"
+        android:drawable="@drawable/w_blue_selected" />
+    <item
+        android:state_enabled="false"
+        android:drawable="@drawable/w_disabled" />
+    <item
+        android:drawable="@drawable/w_blue_default" />
+</selector>

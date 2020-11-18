@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     The Phoenix Hospitality Management System
-    Launcher App Source Code
-    App List Layout Definition File
+    System Library Package
+    Manifest File
     Copyright (c) 2020 By Troy Marker Enterprises
     All Rights Under Copyright Reserved
 
     The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
     Use of this code outside the PHMS is strictly prohibited.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp" >
-    <Button
-        android:id="@+id/ApBtn"
-        style="@style/AppListButton" />
-</LinearLayout>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.phoenixhosman.phoenixlib"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="28"
+        android:targetSdkVersion="29" />
+
+</manifest>

@@ -20,27 +20,27 @@
         android:text="@string/title" />
     <EditText
         android:id="@+id/etUsername"
-        style="@style/Phoenix_Activity_Button_Bank_EditText.Green" />
+        style="@style/ButtonBankEditText.Green" />
     <TextView
-        style="@style/Phoenix_Activity_Button_Bank_TextView.White"
+        style="@style/ButtonBankTextView.White"
         android:text="@string/username" />
     <EditText
         android:id="@+id/etPassword"
-        style="@style/Phoenix_Activity_Button_Bank_EditText.Green"
+        style="@style/ButtonBankEditText.Green"
         android:inputType="textPassword" />
     <TextView
-        style="@style/Phoenix_Activity_Button_Bank_TextView.White"
+        style="@style/ButtonBankTextView.White"
         android:text="@string/password" />
     <Button
         android:id="@+id/btnLogon"
-        style="@style/Phoenix_Activity_Button_Bank_Button.Blue"
+        style="@style/ButtonBankButton.Blue"
         android:text="@string/login" />
     <Button
         android:id="@+id/btnLockPass"
-        style="@style/Phoenix_Activity_Button_Bank_Button.Blue"
+        style="@style/ButtonBankButton.Blue"
         android:text="@string/admin_access" />
     <TextView
         android:id="@+id/tvWarning"
-        style="@style/Phoenix_Activity_Button_Bank_Warning"
+        style="@style/ButtonBankWarning"
         android:text="@string/blank" />
 </LinearLayout>

@@ -1,13 +1,13 @@
 /*
-    The Phoenix Hospitality Management System
-    Launcher App Source Code
-    Main Activity Code File
-    Copyright (c) 2020 By Troy Marker Enterprises
-    All Rights Under Copyright Reserved
+The Phoenix Hospitality Management System
+Launcher App Source Code
+Main Activity Code File
+Copyright (c) 2020 By Troy Marker Enterprises
+All Rights Under Copyright Reserved
 
-    The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
-    Use of this code outside the PHMS is strictly prohibited.
- */
+The code in this file was created for use with the Phoenix Hospitality Management System (PHMS).
+Use of this code outside the PHMS is strictly prohibited.
+*/
 package com.phoenixhosman.launcher;
 
 import android.annotation.SuppressLint;
@@ -22,16 +22,18 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import com.phoenixhosman.phoenixapi.*;
+import com.phoenixhosman.phoenixlib.ProviderUser;
+import com.phoenixhosman.phoenixlib.ActivityPhoenixLib;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.concurrent.atomic.AtomicInteger;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import static android.view.View.inflate;
+import static com.phoenixhosman.phoenixapi.ManagerSecurityApi.*;
 
 /**
  * This activity display links to the other apps in the Phoenix Hospitality
@@ -49,6 +51,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
     private EditText etUsername;
     private EditText etPassword;
     final private static int REQUEST_CODE_1 = 1;
+    final ActivityPhoenixLib Phoenix = new ActivityPhoenixLib();
 
     /**
      * This method will create the activity, read content to display, and show the main activity screen
@@ -57,6 +60,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         View decorView = getWindow().getDecorView();
@@ -81,7 +85,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
             new ManagerSecurityApi(strApiUrl);
             tvWarning.setText(getString(R.string.warning, rtrim(strCoName)));
         } else {
-            Error("Required setting missing.", true);
+            Phoenix.Error(getApplicationContext(),getString(R.string.required), false);
         }
 
     }
@@ -92,119 +96,69 @@ public class ActivityHome extends Activity implements View.OnClickListener
      */
     @Override
     public void onBackPressed() {
-        Error("The back button has been disabled.", false);
+        Phoenix.Error(ActivityHome.this, getString(R.string.disabled, getString(R.string.back)),false);
     }
 
     /**
-     * The error display method
-     * This method displays a dialog box with an error message and a close button.
-     * @param strError the error message to display
+     * This method overrides the parents click listner.
+     * @param v the view clicked.
      */
-    @SuppressWarnings ("SameParameterValue")
-    private void Error(String strError, Boolean exit) {
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
-        View view = inflate(this, R.layout.dialog_error, null);
-        Button btnExit = view.findViewById(R.id.btnExitButton);
-        Button btnError = view.findViewById(R.id.btnErrorMessage);
-        btnError.setText(getString(R.string.error, strError ));
-        mBuilder.setView(view);
-        AlertDialog dialog = mBuilder.create();
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setCancelable(false);
-        dialog.show();
-        btnExit.setOnClickListener(v -> {
-            dialog.dismiss();
-            if (exit) finishAndRemoveTask();
-        });
+    @Override
+    public void onClick(View v) {
+        Button button = (Button)v;
+        String buttonText = button.getText().toString();
+        if  (buttonText.equals(getString(R.string.login))) {
+            if (etUsername.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()) {
+                Phoenix.Error(ActivityHome.this, getString(R.string.both_required,getString(R.string.username_password)), false);
+            } else {
+                Call<String> call = getInstance().getApi().login(etUsername.getText().toString(), etPassword.getText().toString());
+                call.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+                        String body = response.body();
+                        try {
+                            assert body != null;
+                            JSONObject obj = new JSONObject(body);
+                            if (obj.optBoolean("success")) {
+                                etUsername.setText("");
+                                etPassword.setText("");
+                                etUsername.requestFocus();
+                                getContentResolver().delete(ProviderUser.CONTENT_URI, null, null);
+                                ContentValues values = new ContentValues();
+                                values.put(ProviderUser.name, obj.optString("username"));
+                                values.put(ProviderUser.grade, obj.optInt("grade"));
+                                values.put(ProviderUser.gradename, obj.optString("gradename"));
+                                values.put(ProviderUser.department, obj.optInt("department"));
+                                values.put(ProviderUser.departmentname, obj.optString("departmentname"));
+                                getContentResolver().insert(ProviderUser.CONTENT_URI, values);
+                                Phoenix.Success(ActivityHome.this, obj.optString("message"), 5);
+                                showApps(obj.optString("username"), obj.optInt("grade"), obj.optString("gradename"), obj.optInt("department"), obj.optString("departmentname"));
+                            } else {
+                                Phoenix.Error(getApplicationContext(), getString(R.string.user_not), false);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-    }
+                    @Override
+                    public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
 
-    /**
-     * Method to display the lock password dialog
-     * @param strPrompt - the dialog prompt
-     */
-    @SuppressWarnings ("SameParameterValue")
-    private void InputDialog(String strPrompt) {
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
-        View view = inflate(this, R.layout.dialog_input, null);
-        TextView txtPrompt = view.findViewById(R.id.txtPrompt);
-        EditText edtLockPass = view.findViewById(R.id.edtLockPass);
-        Button btnEnter = view.findViewById(R.id.btnEnter);
-        txtPrompt.setText(getString(R.string.input_prompt, strPrompt));
-        mBuilder.setView(view);
-        AlertDialog dialog = mBuilder.create();
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setCancelable(false);
-        dialog.show();
-        btnEnter.setOnClickListener(v -> {
-            if (edtLockPass.getText().toString().equals(strLockPass)) {
-                dialog.dismiss();
+                    }
+                });
+            }
+        } else if (buttonText.equals(getString(R.string.admin_access))) {
+            String LockPass = Phoenix.InputDialog(ActivityHome.this.getApplicationContext(), getString(R.string.input_prompt, getString(R.string.enter_lock_pass)));
+            if (LockPass.equals(strLockPass)) {
                 this.getPackageManager().clearPackagePreferredActivities(this.getPackageName());
                 finish();
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-            } else {
-                dialog.dismiss();
             }
-        });
-    }
-
-    /**
-     * This method overrides the parents click listner.
-     * @param view the view clicked.
-     */
-    @Override
-    public void onClick(View view) {
-        switch(view.getId()) {
-            case R.id.btnLogon:
-                if (etUsername.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()) {
-                    Error("Both the username and password are required.", false);
-                } else {
-                    Call<String> call = ManagerSecurityApi.getInstance().getApi().login(etUsername.getText().toString(), etPassword.getText().toString());
-                    call.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-                            String body = response.body();
-                                try {
-                                    assert body != null;
-                                    JSONObject obj = new JSONObject(body);
-                                    if(obj.optBoolean("success")) {
-                                        etUsername.setText("");
-                                        etPassword.setText("");
-                                        etUsername.requestFocus();
-                                        getContentResolver().delete(ProviderUser.CONTENT_URI, null, null);
-                                        ContentValues values = new ContentValues();
-                                        values.put(ProviderUser.name, obj.optString("username"));
-                                        values.put(ProviderUser.grade, obj.optInt("grade"));
-                                        values.put(ProviderUser.gradename, obj.optString("gradename"));
-                                        values.put(ProviderUser.department, obj.optInt("department"));
-                                        values.put(ProviderUser.departmentname, obj.optString("departmentname"));
-                                        getContentResolver().insert(ProviderUser.CONTENT_URI, values);
-                                        Toast.makeText(getApplicationContext(), obj.optString("message"), Toast.LENGTH_LONG).show();
-                                        showApps(obj.optString("username"), obj.optInt("grade"), obj.optString("gradename"), obj.optInt("department"), obj.optString("departmentname"));
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), "User not authorized.", Toast.LENGTH_LONG).show();
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
-
-                        }
-                    });
-                }
-                break;
-            case R.id.btnLockPass:
-                InputDialog("Enter Lock Password:");
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + view.getId());
+        } else {
+            throw new IllegalStateException(getString(R.string.unexpected) + v.getId());
         }
     }
 
@@ -226,6 +180,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
      * @param s the string to trim
      * @return the trimmed string
      */
+    @NonNull
     public static String rtrim(String s) {
         AtomicInteger i;
         i = new AtomicInteger(s.length() - 1);
