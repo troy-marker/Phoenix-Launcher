@@ -11,26 +11,29 @@
 package com.phoenixhosman.launcher;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.phoenixhosman.phoenixapi.ObjectApp;
 import com.phoenixhosman.phoenixlib.ActivityPhoenixLib;
 import com.phoenixhosman.phoenixlib.ProviderUser;
+import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import java.util.concurrent.atomic.AtomicReference;
+
 
 /**
  * This activity display links to the other apps in the Phoenix Hospitality
@@ -41,14 +44,12 @@ import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
  * @since 0.5.0
  */
 public class ActivityApp extends Activity implements View.OnClickListener {
-    private PackageManager manager;
-    private RecyclerView.Adapter ApAdapter;
     private final LinearLayoutManager ApLayoutManager = new LinearLayoutManager(this);
-    private final ArrayList<ObjectApp> ApList = new ArrayList<>();
-    private int count = 0;
-    private String grade;
-    private String department;
     final ActivityPhoenixLib Phoenix = new ActivityPhoenixLib();
+    private static String grade = "";
+    private static String gradename = "";
+    private static String department = "";
+    private static String departmentname = "";
 
     /**
      * This method will create the activity, read content to display, and show the main activity screen
@@ -63,10 +64,10 @@ public class ActivityApp extends Activity implements View.OnClickListener {
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
         setContentView(R.layout.activity_apps);
         RecyclerView ApRecyclerView = findViewById(R.id.rvApps);
-        ApAdapter = new ApAdapter(ApList);
+        RecyclerView.Adapter appAdapter = new AppAdapter(this);
         ApRecyclerView.setHasFixedSize(true);
         ApRecyclerView.setLayoutManager(ApLayoutManager);
-        ApRecyclerView.setAdapter(ApAdapter);
+        ApRecyclerView.setAdapter(appAdapter);
         TextView tvLoggedUsername = findViewById(R.id.tvLoggedUsername);
         TextView tvAccessGrade = findViewById(R.id.tvAccessGrade);
         TextView tvDepartment = findViewById(R.id.tvDepartment);
@@ -75,100 +76,86 @@ public class ActivityApp extends Activity implements View.OnClickListener {
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         grade = intent.getStringExtra("grade");
-        String gradename = intent.getStringExtra("gradename");
+        gradename = intent.getStringExtra("gradename");
         department = intent.getStringExtra("department");
-        String departmentname = intent.getStringExtra("departmentname");
+        departmentname = intent.getStringExtra("departmentname");
         tvLoggedUsername.setText(getString(R.string.current_user, username));
         tvAccessGrade.setText(getString(R.string.current_grade, gradename));
         tvDepartment.setText(getString(R.string.current_department, departmentname));
-        loadApps();
-
-    }
-
-    /**
-     * This method reads all the apps on the device, and displays only those
-     * apps that are part of the Phoenix Hospitality System, with the
-     * exception of Phoenix Install and Phoenix Launcher.
-     */
-    private void loadApps(){
-        manager = getPackageManager();
-        ApList.clear();
-        Intent i = new Intent(Intent.ACTION_MAIN, null);
-        i.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
-        for(ResolveInfo ri:availableActivities){
-            String temp = (String) ri.loadLabel(manager);
-            if (temp.contains("Phoenix")) {
-                if (!temp.contains("Phoenix Launcher") && !temp.contains("Phoenix Install")) {
-                    ApList.add(new ObjectApp(
-                            ri.loadLabel(manager),
-                            ri.activityInfo.packageName
-                    ));
-                }
-            }
-        }
-        ApAdapter.notifyDataSetChanged();
     }
 
     /**
      * This is the adapter for the App recycler view.
      */
-    public class ApAdapter extends RecyclerView.Adapter<ApAdapter.ApViewHolder> {
-        private final ArrayList<ObjectApp> mApList;
+    public static class AppAdapter extends RecyclerView.Adapter<AppAdapter.ViewHolder> {
+        private final ArrayList<ObjectApp> mAppList;
 
-        class ApViewHolder extends ViewHolder {
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+            public TextView AppTitle;
+            public ImageView AppIcon;
 
-            final Button mApBtn;
+            public ViewHolder(View itemView) {
+                super(itemView);
+                AppTitle = itemView.findViewById(R.id.AppTitle);
+                AppIcon = itemView.findViewById(R.id.AppIcon);
+                itemView.setOnClickListener(this);
+            }
 
-            ApViewHolder(View ApView) {
-                super(ApView);
-                mApBtn = ApView.findViewById(R.id.ApBtn);
+            @Override
+            public void onClick (View v) {
+                int pos = getAdapterPosition();
+                Context context = v.getContext();
+                Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(mAppList.get(pos).getName().toString());
+                assert launchIntent != null;
+                launchIntent.putExtra("grade", grade);
+                launchIntent.putExtra("gradename", gradename);
+                launchIntent.putExtra("department", department);
+                launchIntent.putExtra("departmentname", departmentname);
+                context.startActivity(launchIntent);
             }
         }
 
-        ApAdapter(ArrayList<ObjectApp> ApList) {
-            mApList = ApList;
-        }
-        @NonNull
-        @Override
-        public ApViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_app, parent, false);
-            return new ApViewHolder(view);
-        }
-        @Override
-        public void onBindViewHolder(@NonNull ApViewHolder holder, final int pos) {
-            ObjectApp currentAp = mApList.get(pos);
-            holder.mApBtn.setText(currentAp.getLabel());
-            switch (count) {
-                case 0:
-                    holder.mApBtn.setBackgroundResource(R.drawable.x_green_button);
-                    count++;
-                    break;
-                case 1:
-                    holder.mApBtn.setBackgroundResource(R.drawable.x_yellow_button);
-                    count++;
-                    break;
-                case 2:
-                    holder.mApBtn.setBackgroundResource(R.drawable.x_red_button);
-                    count++;
-                    break;
-                case 3:
-                    holder.mApBtn.setBackgroundResource(R.drawable.x_blue_button);
-                    count = 0;
-                    break;
-                default:
+        public AppAdapter(Context c) {
+            PackageManager pm = c.getPackageManager();
+            mAppList = new ArrayList<>();
+            Intent i = new Intent(Intent.ACTION_MAIN, null);
+            i.addCategory(Intent.CATEGORY_LAUNCHER);
+            List<ResolveInfo> allApps = pm.queryIntentActivities(i, 0);
+            for(ResolveInfo ri:allApps) {
+                String temp = (String) ri.loadLabel(pm);
+                if (temp.contains("Phoenix")) {
+                    if (!temp.contains("Phoenix Launcher") && !temp.contains("Phoenix Install")) {
+                        mAppList.add(new ObjectApp(
+                                ri.loadLabel(pm),
+                                ri.activityInfo.packageName,
+                                ri.activityInfo.loadIcon(pm)));
+                    }
+                }
             }
-            holder.mApBtn.setOnClickListener(view -> {
-                Intent intent = manager.getLaunchIntentForPackage(ApList.get(pos).getName().toString());
-                assert intent != null;
-                intent.putExtra("grade", grade);
-                intent.putExtra("department", department);
-                startActivity(intent);
-            });
         }
+
+        @Override
+        public void onBindViewHolder(AppAdapter.ViewHolder viewHolder, int i) {
+            String appLabel = mAppList.get(i).getLabel().toString();
+            Drawable appIcon = mAppList.get(i).getIcon();
+            TextView textView = viewHolder.AppTitle;
+            textView.setText(appLabel);
+            ImageView imageView = viewHolder.AppIcon;
+            imageView.setImageDrawable(appIcon);
+        }
+
         @Override
         public int getItemCount() {
-            return mApList.size();
+            return mAppList.size();
+        }
+
+        @Override
+        public AppAdapter.@NotNull ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            View view = inflater.inflate(R.layout.list_app, parent, false);
+            AtomicReference<ViewHolder> viewHolder;
+            viewHolder = new AtomicReference<>(new ViewHolder(view));
+            return viewHolder.get();
         }
     }
 

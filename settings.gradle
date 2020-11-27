@@ -1,8 +1,4 @@
 include ':PhoenixLibraryV1.5.0'
 include ':PhoenixAPIV1.5.0'
-include ':PhoenixLibraryV1.5.0'
-include ':PhoenixLibraryV1.5.0'
-include ':PhoenixAPIV1.5.0'
-include ':PhoenixLibraryV1.5.0'
 include ':app'
 rootProject.name = "Phoenix Launcher"

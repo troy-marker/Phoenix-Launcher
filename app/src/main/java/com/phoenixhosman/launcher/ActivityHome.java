@@ -48,6 +48,7 @@ public class ActivityHome extends Activity implements View.OnClickListener
     private String strCoName;
     private String strApiUrl;
     private String strLockPass;
+    private EditText etLockPass;
     private EditText etUsername;
     private EditText etPassword;
     final private static int REQUEST_CODE_1 = 1;
@@ -68,11 +69,10 @@ public class ActivityHome extends Activity implements View.OnClickListener
         setContentView(R.layout.activity_home);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
+        etLockPass = findViewById(R.id.etLockPass);
         TextView tvWarning = findViewById(R.id.tvWarning);
         Button btnLogon = findViewById(R.id.btnLogon);
-        Button btnLockPass = findViewById(R.id.btnLockPass);
         btnLogon.setOnClickListener(this);
-        btnLockPass.setOnClickListener(this);
         @SuppressLint("Recycle") Cursor cursor = getContentResolver().query(Uri.parse("content://com.phoenixhosman.installer.ProviderSettings/settings"), null, null, null, null, null);
         assert cursor != null;
         if(cursor.moveToFirst()) {
@@ -108,54 +108,55 @@ public class ActivityHome extends Activity implements View.OnClickListener
         Button button = (Button)v;
         String buttonText = button.getText().toString();
         if  (buttonText.equals(getString(R.string.login))) {
-            if (etUsername.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()) {
-                Phoenix.Error(ActivityHome.this, getString(R.string.both_required,getString(R.string.username_password)), false);
+            if (!etLockPass.getText().toString().equals("")) {
+                if (etLockPass.getText().toString().equals(strLockPass)) {
+                    this.getPackageManager().clearPackagePreferredActivities(this.getPackageName());
+                    finish();
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_HOME);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
             } else {
-                Call<String> call = getInstance().getApi().login(etUsername.getText().toString(), etPassword.getText().toString());
-                call.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-                        String body = response.body();
-                        try {
-                            assert body != null;
-                            JSONObject obj = new JSONObject(body);
-                            if (obj.optBoolean("success")) {
-                                etUsername.setText("");
-                                etPassword.setText("");
-                                etUsername.requestFocus();
-                                getContentResolver().delete(ProviderUser.CONTENT_URI, null, null);
-                                ContentValues values = new ContentValues();
-                                values.put(ProviderUser.name, obj.optString("username"));
-                                values.put(ProviderUser.grade, obj.optInt("grade"));
-                                values.put(ProviderUser.gradename, obj.optString("gradename"));
-                                values.put(ProviderUser.department, obj.optInt("department"));
-                                values.put(ProviderUser.departmentname, obj.optString("departmentname"));
-                                getContentResolver().insert(ProviderUser.CONTENT_URI, values);
-                                Phoenix.Success(ActivityHome.this, obj.optString("message"), 5);
-                                showApps(obj.optString("username"), obj.optInt("grade"), obj.optString("gradename"), obj.optInt("department"), obj.optString("departmentname"));
-                            } else {
-                                Phoenix.Error(getApplicationContext(), getString(R.string.user_not), false);
+                if (etUsername.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()) {
+                    Phoenix.Error(ActivityHome.this, getString(R.string.both_required, getString(R.string.username_password)), false);
+                } else {
+                    Call<String> call = getInstance().getApi().login(etUsername.getText().toString(), etPassword.getText().toString());
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+                            String body = response.body();
+                            try {
+                                assert body != null;
+                                JSONObject obj = new JSONObject(body);
+                                if (obj.optBoolean("success")) {
+                                    etUsername.setText("");
+                                    etPassword.setText("");
+                                    etUsername.requestFocus();
+                                    getContentResolver().delete(ProviderUser.CONTENT_URI, null, null);
+                                    ContentValues values = new ContentValues();
+                                    values.put(ProviderUser.name, obj.optString("username"));
+                                    values.put(ProviderUser.grade, obj.optInt("grade"));
+                                    values.put(ProviderUser.gradename, obj.optString("gradename"));
+                                    values.put(ProviderUser.department, obj.optInt("department"));
+                                    values.put(ProviderUser.departmentname, obj.optString("departmentname"));
+                                    getContentResolver().insert(ProviderUser.CONTENT_URI, values);
+                                    Phoenix.Success(ActivityHome.this, obj.optString("message"), 5);
+                                    showApps(obj.optString("username"), obj.optInt("grade"), obj.optString("gradename"), obj.optInt("department"), obj.optString("departmentname"));
+                                } else {
+                                    Phoenix.Error(getApplicationContext(), getString(R.string.user_not), false);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
 
-                    @Override
-                    public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
+                        @Override
+                        public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
 
-                    }
-                });
-            }
-        } else if (buttonText.equals(getString(R.string.admin_access))) {
-            String LockPass = Phoenix.InputDialog(ActivityHome.this.getApplicationContext(), getString(R.string.input_prompt, getString(R.string.enter_lock_pass)));
-            if (LockPass.equals(strLockPass)) {
-                this.getPackageManager().clearPackagePreferredActivities(this.getPackageName());
-                finish();
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                        }
+                    });
+                }
             }
         } else {
             throw new IllegalStateException(getString(R.string.unexpected) + v.getId());

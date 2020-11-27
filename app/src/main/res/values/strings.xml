@@ -17,7 +17,7 @@
     <string name="current_user">Current User: %1$s</string>
     <string name="enter">ENTER</string>
     <string name="error">ERROR: %1$s</string>
-    <string name="input_prompt">%1$s</string>
+    <string name="input_prompt">Please enter %1$s</string>
     <string name="login">LOGIN</string>
     <string name="logoff">LOGOFF</string>
     <string name="password">PASSWORD</string>
@@ -30,6 +30,8 @@
     <string name="both_required">Both the %1$s are required.</string>
     <string name="username_password">username and password</string>
     <string name="user_not">User not authorized.</string>
-    <string name="enter_lock_pass">Enter Lock Password:</string>
+    <string name="enter_lock_pass">lock password:</string>
     <string name="unexpected">Unexpected value: </string>
+    <string name="lock_password">Lock Password</string>
+    <string name="appicon">AppIcon</string>
 </resources>

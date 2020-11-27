@@ -116,6 +116,9 @@
         <item name="android:paddingEnd">5dp</item>
         <item name="android:textSize">36sp</item>
     </style>
+    <style name="ButtonBankEditText.Blue">
+        <item name="android:background">@color/Phoenix_Lt_Blue</item>
+    </style>
     <style name="ButtonBankEditText.Green">
         <item name="android:background">@color/Phoenix_Lt_Green</item>
     </style>

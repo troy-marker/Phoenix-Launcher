@@ -46,10 +46,13 @@
             android:id="@+id/btnLogon"
             style="@style/ButtonBankButton.Blue"
             android:text="@string/login" />
-        <Button
-            android:id="@+id/btnLockPass"
-            style="@style/ButtonBankButton.Blue"
-            android:text="@string/admin_access" />
+        <EditText
+            android:id="@+id/etLockPass"
+            style="@style/ButtonBankEditText.Blue"
+            android:inputType="textPassword" />
+        <TextView
+            style="@style/ButtonBankTextView.White"
+            android:text="@string/lock_password" />
     </LinearLayout>
 
     <LinearLayout
